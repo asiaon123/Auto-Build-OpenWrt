@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build Lean_LEDE_B70_PW
+name: Build B70_CTCGFW_Passwall_1806
 
 on:
   repository_dispatch:
@@ -18,17 +18,17 @@ on:
         description: 'SSH connection to Actions'
         required: false
         default: 'false'
-#  schedule:
-#    - cron: 0 6 1/3 * *
+  # schedule:
+  #   - cron: 0 6 1/3 * *
 #  watch:
 #    types: started
 
 env:
-  REPO_URL: https://github.com/coolsnowwolf/lede
-  REPO_BRANCH: master
+  REPO_URL: https://github.com/immortalwrt/immortalwrt.git
+  REPO_BRANCH: openwrt-18.06
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: Lean_LEDE_B70_PW.config
-  DIY_P1_SH: diy-part1.sh
+  CONFIG_FILE: B70_CTCGFW_Passwall_1806.config
+  DIY_P1_SH: diy-part3.sh
   DIY_P2_SH: diy-part2.sh
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true

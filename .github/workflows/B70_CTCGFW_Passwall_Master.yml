@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build CTCGFW_B70_PW
+name: Build B70_CTCGFW_Passwall_Master
 
 on:
   repository_dispatch:
@@ -27,7 +27,7 @@ env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt.git
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: CTCGFW_B70_PW.config
+  CONFIG_FILE: B70_CTCGFW_Passwall_Master.config
   DIY_P1_SH: diy-part3.sh
   DIY_P2_SH: diy-part2.sh
   UPLOAD_BIN_DIR: true
