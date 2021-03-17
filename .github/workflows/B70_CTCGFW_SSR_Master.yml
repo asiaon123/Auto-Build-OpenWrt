@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build B70_CTCGFW_Passwall_Master
+name: Build B70_CTCGFW_SSR_Master
 
 on:
   repository_dispatch:
@@ -27,7 +27,7 @@ env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt.git
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: B70_CTCGFW_Passwall_Master.config
+  CONFIG_FILE: B70_CTCGFW_SSR_Master.config
   DIY_P1_SH: diy-part3.sh
   DIY_P2_SH: diy-part2.sh
   UPLOAD_BIN_DIR: true
@@ -135,7 +135,7 @@ jobs:
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
-        echo "::set-output name=release_tag::Master_Passwall_$(date +"%Y.%m.%d-%H%M")"
+        echo "::set-output name=release_tag::Master_SSR_$(date +"%Y.%m.%d-%H%M")"
         touch release.txt
         echo "::set-output name=status::success"
     - name: Upload firmware to release
