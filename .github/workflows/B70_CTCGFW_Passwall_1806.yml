@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build B70_CTCGFW_Passwall_1806
+name: B70_CTCGFW_Passwall_1806
 
 on:
   repository_dispatch:
