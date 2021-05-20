@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: B70_CTCGFW_Passwall_1806
+name: HC5661_Master
 
 on:
   repository_dispatch:
@@ -25,9 +25,9 @@ on:
 
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt.git
-  REPO_BRANCH: openwrt-18.06
+  REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: B70_CTCGFW_Passwall_1806.config
+  CONFIG_FILE: HC5661_Master.config
   DIY_P1_SH: diy-part3.sh
   DIY_P2_SH: diy-part2.sh
   UPLOAD_BIN_DIR: true
@@ -135,7 +135,7 @@ jobs:
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
-        echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")_1806_Passwall"
+        echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")_HC5661_Master"
         touch release.txt
         echo "::set-output name=status::success"
     - name: Upload firmware to release
