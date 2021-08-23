@@ -19,6 +19,8 @@ env:
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: config/HC5661_18.06.config
   CUSTOM_SH: custom.sh
+  DVC_NAME: HiFi1S
+  DVC_IP: 192.168.122.1
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
@@ -64,7 +66,7 @@ jobs:
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x $CUSTOM_SH
         cd openwrt
-        $GITHUB_WORKSPACE/$CUSTOM_SH
+        $GITHUB_WORKSPACE/$CUSTOM_SH $DVC_NAME $DVC_IP
 
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
@@ -120,7 +122,7 @@ jobs:
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
-        echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")_${GITHUB_WORKFLOW}"
+        echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")_$DVC_NAME"
         touch release.txt
         echo "::set-output name=status::success"
 
