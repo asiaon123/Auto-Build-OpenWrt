@@ -19,7 +19,7 @@ env:
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: config/HC5962-21.02.config
   CUSTOM_SH: custom.sh
-  DVC_NAME: B70
+  DVC_NAME: HiWiFi B70
   DVC_IP: 192.168.121.1
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
