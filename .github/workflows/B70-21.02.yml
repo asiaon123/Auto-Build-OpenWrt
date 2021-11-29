@@ -1,4 +1,4 @@
-name: HC5962-21.02
+name: B70-21.02
 
 on:
   repository_dispatch:
@@ -17,9 +17,9 @@ env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt.git
   REPO_BRANCH: openwrt-21.02
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: config/HC5962-21.02.config
+  CONFIG_FILE: config/B70-21.02.config
   CUSTOM_SH: custom.sh
-  DVC_NAME: HC5962
+  DVC_NAME: B70
   DVC_IP: 192.168.121.1
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
