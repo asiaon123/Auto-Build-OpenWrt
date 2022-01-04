@@ -1,4 +1,4 @@
-name: K2P-lede
+name: K2P-lede-Passwall
 
 on:
   repository_dispatch:
@@ -14,10 +14,11 @@ on:
 #    types: started
 
 env:
+  OPENWRT_RELEASE_BRANCH: LEDE
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: config/K2P-lede.config
+  CONFIG_FILE: config/K2P-lede-Passwall.config
   FEEDS_SH: feeds.sh
   CUSTOM_SH: custom.sh
   DVC_NAME: K2P
@@ -130,7 +131,7 @@ jobs:
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
-        echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")_$DVC_NAME"
+        echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")_$OPENWRT_RELEASE_BRANCH_$DVC_NAME"
         touch release.txt
         echo "::set-output name=status::success"
 

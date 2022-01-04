@@ -1,4 +1,4 @@
-name: HC5962-master
+name: K2P-lede-SSR
 
 on:
   repository_dispatch:
@@ -14,13 +14,15 @@ on:
 #    types: started
 
 env:
-  REPO_URL: https://github.com/immortalwrt/immortalwrt.git
+  OPENWRT_RELEASE_BRANCH: LEDE
+  REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: config/HC5962-master.config
+  CONFIG_FILE: config/K2P-lede-SSR.config
+  FEEDS_SH: feeds.sh
   CUSTOM_SH: custom.sh
-  DVC_NAME: HC5962
-  DVC_IP: 192.168.121.1
+  DVC_NAME: K2P
+  DVC_IP: 192.168.122.1
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
@@ -53,6 +55,13 @@ jobs:
         df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+
+    - name: Load custom feeds
+      run: |
+        [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
+        chmod +x $FEEDS_SH
+        cd openwrt
+        $GITHUB_WORKSPACE/$FEEDS_SH
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
@@ -122,7 +131,7 @@ jobs:
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
-        echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")_$DVC_NAME"
+        echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")_$OPENWRT_RELEASE_BRANCH_$DVC_NAME"
         touch release.txt
         echo "::set-output name=status::success"
 
