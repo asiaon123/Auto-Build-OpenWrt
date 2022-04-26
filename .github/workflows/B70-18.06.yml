@@ -22,6 +22,8 @@ env:
   CUSTOM_SH: custom.sh
   DVC_NAME: B70
   DVC_IP: 192.168.121.1
+  DRV_TYPE: mt76
+  PW_TYPE: PassWall
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
@@ -123,7 +125,7 @@ jobs:
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
-        echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")_$OPENWRT_RELEASE_BRANCH_$DVC_NAME"
+        echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")_$OPENWRT_RELEASE_BRANCH_$REPO_BRANCH_$DVC_NAME_$DRV_TYPE_$PW_TYPE"
         touch release.txt
         echo "::set-output name=status::success"
 
