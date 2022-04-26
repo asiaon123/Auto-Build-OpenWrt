@@ -119,7 +119,7 @@ jobs:
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
-        echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")_$OPENWRT_RELEASE_BRANCH_$REPO_BRANCH_$DVC_NAME_$DRV_TYPE_$PW_TYPE"
+        echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")-$OPENWRT_RELEASE_BRANCH-$REPO_BRANCH-$DVC_NAME-$DRV_TYPE-$PW_TYPE"
         touch release.txt
         echo "::set-output name=status::success"
     - name: Upload firmware to release
