@@ -1,4 +1,4 @@
-name: B70-21.02
+name: B70-lede-PassWall
 
 on:
   repository_dispatch:
@@ -14,11 +14,12 @@ on:
 #    types: started
 
 env:
-  OPENWRT_RELEASE_BRANCH: ImmortalWRT
-  REPO_URL: https://github.com/immortalwrt/immortalwrt.git
-  REPO_BRANCH: openwrt-21.02
+  OPENWRT_RELEASE_BRANCH: LEDE
+  REPO_URL: https://github.com/coolsnowwolf/lede
+  REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: config/B70-21.02.config
+  CONFIG_FILE: config/B70-lede-PassWall.config
+  FEEDS_SH: feeds.sh
   CUSTOM_SH: custom.sh
   DVC_NAME: B70
   DVC_IP: 192.168.121.1
@@ -56,6 +57,13 @@ jobs:
         df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+
+    - name: Load custom feeds
+      run: |
+        [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
+        chmod +x $FEEDS_SH
+        cd openwrt
+        $GITHUB_WORKSPACE/$FEEDS_SH
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
