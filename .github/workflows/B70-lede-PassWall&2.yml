@@ -1,4 +1,4 @@
-name: B70-lede-PassWall
+name: B70-lede-PassWall&2
 
 on:
   repository_dispatch:
@@ -18,13 +18,13 @@ env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: config/B70-lede-PassWall.config
+  CONFIG_FILE: config/B70-lede-PassWall&2.config
   FEEDS_SH: feeds.sh
   CUSTOM_SH: custom.sh
   DVC_NAME: B70
   DVC_IP: 192.168.121.1
   DRV_TYPE: mt76
-  PW_TYPE: PassWall
+  PW_TYPE: PassWall&2
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
