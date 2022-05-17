@@ -1,4 +1,4 @@
-name: K2P-lede-SSR
+name: K2P-lede
 
 on:
   repository_dispatch:
@@ -18,13 +18,13 @@ env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: config/K2P-lede-SSR.config
+  CONFIG_FILE: config/K2P-lede.config
   FEEDS_SH: feeds.sh
   CUSTOM_SH: custom.sh
   DVC_NAME: K2P
   DVC_IP: 192.168.122.1
   DRV_TYPE: DRV
-  PW_TYPE: SSR
+  PW_TYPE: NONE
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
