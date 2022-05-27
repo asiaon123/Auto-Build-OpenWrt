@@ -1,4 +1,4 @@
-name: HC5661-1806
+name: HC5661-21.02
 
 on:
   repository_dispatch:
@@ -14,15 +14,16 @@ on:
 #    types: started
 
 env:
+  OPENWRT_RELEASE_BRANCH: ImmortalWRT
   REPO_URL: https://github.com/immortalwrt/immortalwrt.git
-  REPO_BRANCH: openwrt-18.06
+  REPO_BRANCH: openwrt-21.02
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: config/HC5661_18.06.config
+  CONFIG_FILE: config/HC5991-21.02.config
   CUSTOM_SH: custom.sh
   DVC_NAME: HC5661
-  DVC_IP: 192.168.122.1
+  DVC_IP: 192.168.123.1
   DRV_TYPE: mt76
-  PW_TYPE: PassWall
+  PW_TYPE: SSR
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
