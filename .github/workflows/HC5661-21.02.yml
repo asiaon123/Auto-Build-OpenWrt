@@ -18,12 +18,12 @@ env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt.git
   REPO_BRANCH: openwrt-21.02
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: config/HC5991-21.02.config
+  CONFIG_FILE: config/HC5661-21.02.config
   CUSTOM_SH: custom.sh
   DVC_NAME: HC5661
   DVC_IP: 192.168.123.1
   DRV_TYPE: mt76
-  PW_TYPE: SSR
+  PW_TYPE: NONE
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
