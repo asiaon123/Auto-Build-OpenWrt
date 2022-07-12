@@ -12,3 +12,6 @@ sed -i "s/OpenWrt/$1/g" package/base-files/files/bin/config_generate
 
 # Modify wifi
 sed -i "s/ssid=OpenWrt/ssid=WeiFei@2040/" package/kernel/mac80211/files/lib/wifi/mac80211.sh
+
+# Update 7621 CPU Lock To 1000Hz
+cp ../991-mt7621-improve_cpu_clock.patch target/linux/ramips/patches-5.4/
