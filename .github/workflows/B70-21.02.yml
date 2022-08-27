@@ -19,6 +19,7 @@ env:
   REPO_BRANCH: openwrt-21.02
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: config/B70-21.02.config
+  FEEDS_SH: feeds.sh
   CUSTOM_SH: custom.sh
   DVC_NAME: B70
   DVC_IP: 192.168.121.1
