@@ -1,4 +1,4 @@
-name: B70-lede
+name: B70-lede-PW
 
 on:
   repository_dispatch:
@@ -18,7 +18,7 @@ env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: config/B70-lede.config
+  CONFIG_FILE: config/B70-lede-PW.config
   FEEDS_SH: feeds.sh
   CUSTOM_SH: custom.sh
   DVC_NAME: B70
