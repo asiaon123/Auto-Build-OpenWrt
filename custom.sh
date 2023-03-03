@@ -15,3 +15,6 @@ sed -i "s/ssid=OpenWrt/ssid=WeiFei@2040/" package/kernel/mac80211/files/lib/wifi
 
 # Update 7621 CPU Lock To 1000Hz
 # cp $3/991-mt7621-improve_cpu_clock.patch target/linux/ramips/patches-5.4/
+
+# Change kernel version
+# sed -i "s/KERNEL_PATCHVER:=5.4/KERNEL_PATCHVER:=5.10/" target/linux/ramips/Makefile
