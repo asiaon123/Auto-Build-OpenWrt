@@ -1,4 +1,4 @@
-name: B70-lede-PW-5.4
+name: B70-lede-PW
 
 on:
   repository_dispatch:
@@ -23,7 +23,6 @@ env:
   CUSTOM_SH: custom.sh
   DVC_NAME: B70
   DVC_IP: 192.168.121.1
-  KERNAL_VER: 5.4
   DRV_TYPE: mt76
   PW_TYPE: PassWall
   UPLOAD_BIN_DIR: true
@@ -136,7 +135,7 @@ jobs:
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
-        echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")-$OPENWRT_RELEASE_BRANCH-$REPO_BRANCH-$DVC_NAME-$DRV_TYPE-$PW_TYPE-$KERNAL_VER"
+        echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")-$OPENWRT_RELEASE_BRANCH-$REPO_BRANCH-$DVC_NAME-$DRV_TYPE-$PW_TYPE"
         touch release.txt
         echo "::set-output name=status::success"
 
