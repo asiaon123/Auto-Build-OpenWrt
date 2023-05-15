@@ -78,7 +78,7 @@ jobs:
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x $CUSTOM_SH
         cd openwrt
-        cp $GITHUB_WORKSPACE/991-mt7621-improve_cpu_clock.patch target/linux/ramips/patches-5.4/
+        cp -rf $GITHUB_WORKSPACE/322-mt7621-fix-cpu-clk-add-clkdev.patch target/linux/ramips/patches-5.10/
         $GITHUB_WORKSPACE/$CUSTOM_SH $DVC_NAME $DVC_IP
 
     - name: SSH connection to Actions
