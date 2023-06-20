@@ -1,4 +1,4 @@
-name: HC5661-21.02
+name: B70-lede
 
 on:
   repository_dispatch:
@@ -14,16 +14,16 @@ on:
 #    types: started
 
 env:
-  OPENWRT_RELEASE_BRANCH: ImmortalWRT
-  REPO_URL: https://github.com/immortalwrt/immortalwrt.git
-  REPO_BRANCH: openwrt-21.02
+  OPENWRT_RELEASE_BRANCH: LEDE
+  REPO_URL: https://github.com/coolsnowwolf/lede
+  REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: config/HC5661-21.02.config
+  CONFIG_FILE: config/B70-lede.config
+  FEEDS_SH: feeds.sh
   CUSTOM_SH: custom.sh
-  DVC_NAME: HC5661
-  DVC_IP: 192.168.123.1
+  DVC_NAME: B70
+  DVC_IP: 192.168.121.1
   DRV_TYPE: mt76
-  PW_TYPE: NONE
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
@@ -58,6 +58,13 @@ jobs:
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
 
+    - name: Load custom feeds
+      run: |
+        [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
+        chmod +x $FEEDS_SH
+        cd openwrt
+        $GITHUB_WORKSPACE/$FEEDS_SH
+
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
 
@@ -70,6 +77,8 @@ jobs:
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x $CUSTOM_SH
         cd openwrt
+        cp -rf $GITHUB_WORKSPACE/322-mt7621-fix-cpu-clk-add-clkdev.patch target/linux/ramips/patches-5.10/
+        cp -rf $GITHUB_WORKSPACE/991-mt7621-improve_cpu_clock-5.4.patch target/linux/ramips/patches-5.4/
         $GITHUB_WORKSPACE/$CUSTOM_SH $DVC_NAME $DVC_IP
 
     - name: SSH connection to Actions
@@ -126,7 +135,7 @@ jobs:
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
-        echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")-$OPENWRT_RELEASE_BRANCH-$REPO_BRANCH-$DVC_NAME-$DRV_TYPE-$PW_TYPE"
+        echo "::set-output name=release_tag::$(date +"%Y.%m.%d-%H%M")-$OPENWRT_RELEASE_BRANCH-$REPO_BRANCH-$DVC_NAME-$DRV_TYPE"
         touch release.txt
         echo "::set-output name=status::success"
 
