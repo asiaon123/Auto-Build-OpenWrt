@@ -11,7 +11,7 @@ sed -i "s/OpenWrt/$1/g" package/base-files/files/bin/config_generate
 # sed -i "/uci commit system/i\uci set system.@system[0].hostname=$1" package/emortal/default-settings/files/zzz-default-settings-chinese
 
 # Modify wifi
-sed -i "s/country=US/country=AU/" package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i "s/country=CN/country=AU/" package/kernel/mac80211/files/lib/wifi/mac80211.sh
 sed -i "s/ssid=OpenWrt/ssid=WeiFei@2040/" package/kernel/mac80211/files/lib/wifi/mac80211.sh
 # sed -i "s/encryption=none/encryption=psk2/" package/kernel/mac80211/files/lib/wifi/mac80211.sh
 # sed -i "s/encryption=none/encryption=psk2/" package/kernel/mac80211/files/lib/wifi/mac80211.sh
