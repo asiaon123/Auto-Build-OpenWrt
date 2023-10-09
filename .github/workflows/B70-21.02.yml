@@ -66,6 +66,7 @@ jobs:
         chmod +x $CUSTOM_SH
         cd openwrt
         cp -rf $GITHUB_WORKSPACE/991-mt7621-improve_cpu_clock-5.4.patch target/linux/ramips/patches-5.4/
+        cp -rf $GITHUB_WORKSPACE/200-fix-MT76x0-external-LNA-gain-handling.patch package/kernel/mt76/patches-5.4/
         $GITHUB_WORKSPACE/$CUSTOM_SH $DVC_NAME $DVC_IP
 
     - name: SSH connection to Actions
