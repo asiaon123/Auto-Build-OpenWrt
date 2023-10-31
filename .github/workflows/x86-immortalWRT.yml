@@ -1,4 +1,4 @@
-name: x86
+name: x86-immortalWRT
 
 on:
   repository_dispatch:
@@ -15,10 +15,10 @@ on:
 
 env:
   OPENWRT_RELEASE_BRANCH: LEDE
-  REPO_URL: https://github.com/coolsnowwolf/lede
+  REPO_URL: https://github.com/immortalwrt/immortalwrt.git
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: config/x86.config
+  CONFIG_FILE: config/x86-immortalWRT.config
   FEEDS_SH: feeds.sh
   CUSTOM_SH: custom.sh
   DVC_NAME: OpenWRT
