@@ -21,9 +21,3 @@ sed -i "s/ssid=OpenWrt/ssid=WeiFei@2040/" package/kernel/mac80211/files/lib/wifi
 
 # Change kernel version back to 5.4
 # sed -i "s/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.4/" target/linux/ramips/Makefile
-
-# Update x86 kernel for immortalWRT
-# sed -i "/KERNEL_PATCHVER/d" target/linux/x86/Makefile
-sed -i "s/KERNEL_PATCHVER/#KERNEL_PATCHVER/" target/linux/x86/Makefile
-sed -i "s/KERNEL_TESTING_PATCHVER/KERNEL_PATCHVER/" target/linux/x86/Makefile
-sed -i "s/#KERNEL_PATCHVER/KERNEL_TESTING_PATCHVER/" target/linux/x86/Makefile
