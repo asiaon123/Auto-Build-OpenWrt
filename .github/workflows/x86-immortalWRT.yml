@@ -19,9 +19,9 @@ env:
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: config/x86-immortalWRT.config
-  FEEDS_SH: feeds.sh
+  FEEDS_SH: feeds-x86-imWRT.sh
   CUSTOM_SH: custom.sh
-  DVC_NAME: OpenWRT
+  DVC_NAME: x86
   DVC_IP: 192.168.121.1
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
@@ -77,10 +77,6 @@ jobs:
         chmod +x $CUSTOM_SH
         cd openwrt
         $GITHUB_WORKSPACE/$CUSTOM_SH $DVC_NAME $DVC_IP
-
-    - name: SSH connection to Actions
-      uses: P3TERX/ssh2actions@v1.0.0
-      if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
 
     - name: Download package
       id: package
