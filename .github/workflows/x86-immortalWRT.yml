@@ -21,7 +21,7 @@ env:
   CONFIG_FILE: config/x86-immortalWRT.config
   FEEDS_SH: feeds-x86-imWRT.sh
   CUSTOM_SH: custom.sh
-  DVC_NAME: x86
+  DVC_NAME: OpenWRT
   DVC_IP: 192.168.121.1
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
