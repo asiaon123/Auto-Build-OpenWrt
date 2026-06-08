@@ -5,3 +5,4 @@ sed -i '$a src-git bandix https://github.com/timsaya/luci-app-bandix' feeds.conf
 sed -i '$a src-git bandixpackages https://github.com/timsaya/openwrt-bandix' feeds.conf.default
 # sed -i '$a src-git luci_app_xray https://github.com/yichya/luci-app-xray' feeds.conf.default
 sed -i '$a src-git customs https://github.com/asiaon123/custom-openwrt-packages' feeds.conf.default
+sed -i '$a src-git theme-material3 https://github.com/KawaiiHachimi/luci-theme-material3' feeds.conf.default
